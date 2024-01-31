@@ -1,0 +1,29 @@
+<div>
+    <div class="search-bar">
+            <label for="site-search">Search the site:</label>
+            <input id="search" type="search" placeholder="Search Book..." />
+            <input id="author"  autoComplete="on" list="author-filter"  placeholder="Filter Author..."> 
+            <button onclick="redirectToSearch()">Search</button>
+            <datalist id="author-filter">
+                {% for author in authors %}
+                <option>{{author.name}}</option>
+                {% endfor %}
+            </datalist>
+    
+            <script>
+                function redirectToSearch() {
+                    
+                    // Get the value from the search bar
+                    var query = document.getElementById("search").value;
+                    var author = document.getElementById("author").value;
+
+                    // Redirect to /search with the query parameter
+                    window.location.href = "/find/?query=" + encodeURIComponent(query) + "&author=" + encodeURIComponent(author);
+                }
+            </script>
+        </div>
+    
+        <div>
+        </div>
+
+</div>

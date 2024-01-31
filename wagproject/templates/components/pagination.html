@@ -1,0 +1,18 @@
+<div>
+            <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+            {% if page_obj.has_previous %}
+            <a href="?page=1&query={{query}}&author={{author_filter}}">First</a>
+            <a href="?page={{page_obj.previous_page_number}}&query={{query}}&author={{author_filter}}">Prev</a>
+            {% endif %}
+            {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+            <span>{{page_num}}</span>
+            {% else %}
+            <a href="?page={{page_num}}&query={{query}}&author={{author_filter}}">{{page_num}}</a>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}&query={{query}}&author={{author_filter}}">Next</a>
+            <a href="?page={{page_obj.paginator.num_pages}}&query={{query}}&author={{author_filter}}">Last</a>
+            {% endif %}
+</div>

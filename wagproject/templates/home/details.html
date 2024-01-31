@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div>
+{% include "components/header.html" %}
+
+
+
+<h1>{{book.title}}</h1>
+<h2><a href="javascript:searchAuthor('{{book.author.slug}}');">{{book.author.name}}</a></h2>
+<p>{{book.description}}</p>
+<p>{{book.published}}</p>
+
+
+
+
+{% include "components/footer.html" %}
+
+</div>
+
+
+
+<script>
+    function searchAuthor(name) {
+        // Redirect to /search with the query parameter
+        console.log(name)
+        window.location.href = "/find/?query=" + "&author=" + encodeURIComponent(name);
+    }
+</script>
+
+
+
+
+{% endblock %}

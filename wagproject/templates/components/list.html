@@ -1,0 +1,44 @@
+<style>
+    .image-with-text {
+        display: flex;
+        align-items: center;
+    }
+
+    .image-container {
+            flex-shrink: 0; /* Prevent the image from shrinking too much */
+            height: 150px; /* Choose your desired height for the image */
+            margin-right: 15px; /* Adjust spacing between image and text */
+    }
+
+    
+
+    .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            display: block;
+    }
+
+    .text-container {
+            text-align: center;
+    }
+</style>
+
+<div>
+    <h1>Book Titles</h1>
+    {% for book in page_obj %}
+
+    <div class="image-with-text">
+        <div class="image-container">
+            <img src="/media/{{book.image}}" alt="Example Image">
+        </div>
+        <div class="text-container">
+            <h2><a href="/{{book.slug}}">{{book.title}}</a></h2>
+        </div>
+    </div>
+    </br>
+    <!--<h2 class="image"><img class = "image" src="/media/{{book.image}}" alt="Italian Trulli"><a href="/{{book.slug}}" class ="image">{{book.title}}</a></h2> 
+    </br>-->
+    {% endfor %}
+    {% include "components/pagination.html" %}
+</div>
